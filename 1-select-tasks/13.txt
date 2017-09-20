@@ -14,7 +14,7 @@ SELECT
 (SELECT COUNT(Discontinued) FROM Products WHERE Discontinued = 0) AS TotalOfCurrentProducts
 ,(SELECT COUNT(Discontinued) FROM Products WHERE Discontinued = 1) AS TotalOfDiscontinuedProducts 
 
-SELECT 
+SELECT TOP 1
 SUM(CASE WHEN Discontinued = 0 THEN COUNT(Discontinued) END) OVER() [TotalOfCurrentProducts]
 , SUM(CASE WHEN Discontinued = 1 THEN COUNT(Discontinued) END) OVER() [TotalOfDiscontinuedProducts ]
 FROM Products
